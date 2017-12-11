@@ -414,11 +414,15 @@ Vehicle::initVersion()
   getDroneVersion();
 #else
   ACK::DroneVersion ack = getDroneVersion(wait_timeout);
-	if(ACK::getError(ack.ack))
-	{
-		ACK::getErrorCodeMessage(ack.ack, __func__);
-		return false;
-	}
+  DSTATUS("getDroneVersion ack.ack: 0x%08x", ack.ack);
+  DSTATUS("ACK ERROR: %d", ACK::getError(ack.ack));
+  if(ACK::getError(ack.ack))
+  {
+    ACK::getErrorCodeMessage(ack.ack, __func__);
+    //return false;
+    DERROR("getDroneVersion failed, retrying w/o timeout");
+    getDroneVersion();
+  }
 #endif
 
   this->platformManager->millisecSleep(2000);	
