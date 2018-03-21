@@ -43,27 +43,27 @@
     .title((_title_), #_title_, __func__, __LINE__)                            \
     .print
 
-#define STATUS DJI::OSDK::Log::instance().getStatusLogState()
-#define ERROR DJI::OSDK::Log::instance().getErrorLogState()
-#define DEBUG DJI::OSDK::Log::instance().getDebugLogState()
+#define DJI_LOG_STATUS DJI::OSDK::Log::instance().getStatusLogState()
+#define DJI_LOG_ERROR DJI::OSDK::Log::instance().getErrorLogState()
+#define DJI_LOG_DEBUG DJI::OSDK::Log::instance().getDebugLogState()
 
 /*! @brief Global Logging macro for status messages
  *  @details Users can use methods in the DJI::OSDK::Log class to
  *  enable/disable this logging channel
  */
-#define DSTATUS DLOG(STATUS)
+#define DSTATUS DLOG(DJI_LOG_STATUS)
 
 /*! @brief Global Logging macro for error messages
  *  @details Users can use methods in the DJI::OSDK::Log class to
  *  enable/disable this logging channel
  */
-#define DERROR DLOG(ERROR)
+#define DERROR DLOG(DJI_LOG_ERROR)
 
 /*! @brief Global Logging macro for debug messages
  *  @details Users can use methods in the DJI::OSDK::Log class to
  *  enable/disable this logging channel
  */
-#define DDEBUG DLOG(DEBUG)
+#define DDEBUG DLOG(DJI_LOG_DEBUG)
 
 namespace DJI
 {
