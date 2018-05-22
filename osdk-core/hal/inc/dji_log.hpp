@@ -43,6 +43,11 @@
     .title((_title_), #_title_, __func__, __LINE__)                            \
     .print
 
+#define DLOG_PRIVATE(_title_)                                                  \
+  DJI::OSDK::Log::instance()                                                   \
+    .title((_title_), #_title_)                            \
+    .print
+
 #define DJI_LOG_STATUS DJI::OSDK::Log::instance().getStatusLogState()
 #define DJI_LOG_ERROR DJI::OSDK::Log::instance().getErrorLogState()
 #define DJI_LOG_DEBUG DJI::OSDK::Log::instance().getDebugLogState()
@@ -52,18 +57,21 @@
  *  enable/disable this logging channel
  */
 #define DSTATUS DLOG(DJI_LOG_STATUS)
+#define DSTATUS_PRIVATE DLOG_PRIVATE(DJI_LOG_STATUS)
 
 /*! @brief Global Logging macro for error messages
  *  @details Users can use methods in the DJI::OSDK::Log class to
  *  enable/disable this logging channel
  */
 #define DERROR DLOG(DJI_LOG_ERROR)
+#define DERROR_PRIVATE DLOG_PRIVATE(DJI_LOG_ERROR)
 
 /*! @brief Global Logging macro for debug messages
  *  @details Users can use methods in the DJI::OSDK::Log class to
  *  enable/disable this logging channel
  */
 #define DDEBUG DLOG(DJI_LOG_DEBUG)
+#define DDEBUG_PRIVATE DLOG_PRIVATE(DJI_LOG_DEBUG)
 
 namespace DJI
 {
@@ -87,6 +95,10 @@ public:
   //! @note if title level is 0, this log would not be print at all
   //! this feature is used for dynamical/statical optional log output
   Log& title(int level, const char* prefix, const char* func, int line);
+
+  //! @note Used for closed source logging, where we don't want to
+  //! print function name and line number
+  Log& title(int level, const char* prefix);
 
   Log& print();
 

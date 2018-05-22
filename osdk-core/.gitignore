@@ -4,3 +4,5 @@ logs/
 temp
 test/DJI_HardDriver_Manifold.h
 config.json
+
+cmake-build-debug/
