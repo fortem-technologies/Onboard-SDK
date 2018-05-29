@@ -228,6 +228,8 @@ public:
    */
   void setVersion(const Version::FirmWare& value);
 
+  uint32_t          getSdkVersion() const;  // custom
+
   Version::FirmWare getFwVersion() const;
   char*             getHwVersion() const;
   char*             getHwSerialNum() const;
