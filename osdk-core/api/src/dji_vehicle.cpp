@@ -1955,6 +1955,17 @@ Vehicle::getLastReceivedFrame()
   return recvFrame;
 }
 
+uint32_t
+Vehicle::getSdkVersion() const
+{
+  // return DJI OSDK version
+  uint32_t a = 3;
+  uint32_t b = 6;
+  uint32_t c = 0;
+  uint32_t d = 0;
+  return (((a << 24) & 0xff000000) | ((b << 16) & 0x00ff0000) | ((c << 8) & 0x0000ff00) | (d & 0x000000ff));
+}
+
 Version::FirmWare
 Vehicle::getFwVersion() const
 {
