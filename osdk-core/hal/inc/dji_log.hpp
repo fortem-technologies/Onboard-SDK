@@ -50,7 +50,7 @@
 
 #define STATUS DJI::OSDK::Log::instance().getStatusLogState()
 #define ERRORLOG DJI::OSDK::Log::instance().getErrorLogState()
-#define DEBUG DJI::OSDK::Log::instance().getDebugLogState()
+#define DEBUGLOG DJI::OSDK::Log::instance().getDebugLogState()
 
 /*! @brief Global Logging macro for status messages
  *  @details Users can use methods in the DJI::OSDK::Log class to
@@ -70,8 +70,8 @@
  *  @details Users can use methods in the DJI::OSDK::Log class to
  *  enable/disable this logging channel
  */
-#define DDEBUG DLOG(DEBUG)
-#define DDEBUG_PRIVATE DLOG_PRIVATE(DEBUG)
+#define DDEBUG DLOG(DEBUGLOG)
+#define DDEBUG_PRIVATE DLOG_PRIVATE(DEBUGLOG)
 
 namespace DJI
 {
