@@ -36,6 +36,7 @@
 #ifndef LINUXSERIALDEVICE_H
 #define LINUXSERIALDEVICE_H
 
+#include <sys/select.h>
 #include <cstring>
 #include <fcntl.h>
 #include <termios.h>
